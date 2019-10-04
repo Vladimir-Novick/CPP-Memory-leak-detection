@@ -17,11 +17,38 @@ Adding #pragma once of multiple headers *.h files with Notepad++
 
 ![](./images/notepad_insert_pragma_once.png)
 
-## Find memory leaks in multiple the DLL library
+## Find memory leaks in multiple CPP files
 
 ### Enable memory leak detection 
 
+
+The preceding techniques identify memory leaks for memory allocated using the standard CRT malloc function. If your program allocates memory using the C++ new operator, however, you may only see the filename and line number where operator new calls _malloc_dbg in the memory-leak report.
+
+Inserting redifinition into *.cpp files
+
+		Find :  \A^.*?
+		Replace with : #ifdef _DEBUG\n\r#define new DBG_NEW\n\r#endif\n\r
+		Files: *.cpp
+		Search Mode: Regular Expression
+
+
+		
+Inserting redifinition for all *.cpp files
+
+		Find :  \A^.*?
+		Replace with : #ifdef _DEBUG\n\r#define DBG_NEW new ( _NORMAL_BLOCK , __FILE__ , __LINE__ )\n\r#else\n\r#define DBG_NEW new\n\r#endif\n\r
+		Files: *.cpp
+		Search Mode: Regular Expression
+
+![](./images/new_redifinition.png)
+
+and then:
+
 To enable all the debug heap functions, include the following statements in your C++ program
+
+		#define _CRTDBG_MAP_ALLOC
+		#include <stdlib.h>
+		#include <crtdbg.h>
 
 Adding heap malloc detection function of multiple *.cpp files with Notepad++ 
 
@@ -32,25 +59,21 @@ Adding heap malloc detection function of multiple *.cpp files with Notepad++
 
 ![](./images/enable_memory_leek_detection.png)
 
-The preceding techniques identify memory leaks for memory allocated using the standard CRT malloc function. If your program allocates memory using the C++ new operator, however, you may only see the filename and line number where operator new calls _malloc_dbg in the memory-leak report.
+By results you see in all cpp files
 
-Inserting redifinition into *.h files
-
-		Find :  \A^.*?
-		Replace with : #ifdef _DEBUG\n\r#define new DBG_NEW\n\r#endif\n\r
-		Files: *.h
-		Search Mode: Regular Expression
-
-
-
-Inserting redifinition for all *.h files
-
-		Find :  \A^.*?
-		Replace with : #ifdef _DEBUG\n\r#define DBG_NEW new ( _NORMAL_BLOCK , __FILE__ , __LINE__ )\n\r#else\n\r#define DBG_NEW new\n\r#endif\n\r
-		Files: *.h
-		Search Mode: Regular Expression
-
-![](./images/new_redifinition.png)
+		#define _CRTDBG_MAP_ALLOC
+		#include <cstdlib>
+		#include <crtdbg.h>
+		#ifdef _DEBUG
+			#define DBG_NEW new ( _NORMAL_BLOCK , __FILE__ , __LINE__ )
+			// Replace _NORMAL_BLOCK with _CLIENT_BLOCK if you want the
+			// allocations to be of _CLIENT_BLOCK type
+		#else
+			#define DBG_NEW new
+		#endif
+        #ifdef _DEBUG
+		    #define new DBG_NEW
+		#endif
 
 
 When you run this code in the Visual Studio debugger, the call to _CrtDumpMemoryLeaks generates a report in the Output window.		
