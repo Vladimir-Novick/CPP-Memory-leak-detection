@@ -80,7 +80,8 @@ By results you see in all cpp files
 by manual setting
 
 	#ifdef _DEBUG
-		#define new DEBUG_NEW(_NORMAL_BLOCK , __FILE__ , __LINE__)
+		#define DEBUG_NEW new(__FILE__, __LINE__)
+		#define new DEBUG_NEW
 	#undef THIS_FILE
 		static char THIS_FILE[] = __FILE__;
 	#endif
