@@ -77,6 +77,13 @@ By results you see in all cpp files
 			#define new DBG_NEW
 		#endif
 
+by manual setting
+
+	#ifdef _DEBUG
+		#define new DEBUG_NEW(_NORMAL_BLOCK , __FILE__ , __LINE__)
+	#undef THIS_FILE
+		static char THIS_FILE[] = __FILE__;
+	#endif
 
 When you run this code in the Visual Studio debugger, the call to _CrtDumpMemoryLeaks generates a report in the Output window.		
 
