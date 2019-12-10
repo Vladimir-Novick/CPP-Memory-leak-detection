@@ -84,6 +84,11 @@ By manual setting
 		#define DEBUG_NEW new(__FILE__, __LINE__)
 		#define _CRTDBG_MAP_ALLOC
 		#define new DEBUG_NEW
+		#undef THIS_FILE
+		static char BASED_CODE THIS_FILE[] = __FILE__;
+		#else
+		#undef _CRTDBG_MAP_ALLOC
+		#define DEBUG_NEW new
 		#endif
 
 When you run this code in the Visual Studio debugger, the call to _CrtDumpMemoryLeaks generates a report in the Output window.		
@@ -101,7 +106,9 @@ For example :
 					case DLL_THREAD_ATTACH:
 					case DLL_THREAD_DETACH:
 					case DLL_PROCESS_DETACH:
+					#ifdef _DEBUG					
 					   _CrtDumpMemoryLeaks();
+					#endif					   
 						break;
 					}
 					return TRUE;
