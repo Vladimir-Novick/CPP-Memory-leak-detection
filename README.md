@@ -115,18 +115,20 @@ For example :
 				}
 
 
-### brakpoint on memory leak detection items
+### Brakpoint on memory leak detection items
 
-![](./images/memory_leak.png)
+1) Look memory leak report:
+	![](./images/memory_leak.png)
 
-Start your debugging session:
-![](./images/memory_leak_stop.png)
+2) Start your debugging session:
+	![](./images/memory_leak_stop.png)
 
-Type _crtBreakAlloc in the Watch window. 
+3) Type _crtBreakAlloc in the Watch window. 
+{,,MSVCR100d.dll}*__p__crtBreakAlloc()
+	![](./images/memory_leak_watch.png)
+
 {,,MSVCR100d.dll}*__p__crtBreakAlloc()
 
-![](./images/memory_leak_watch.png)
+4) Double click on the -1 value, and enter the new allocation number that causes a user-defined breakpoint.
 
-{,,MSVCR100d.dll}*__p__crtBreakAlloc()
-
-Double click on the -1 value, and enter the new allocation number that causes a user-defined breakpoint.
+5) From the Debug menu, choose Debug -> Go.
