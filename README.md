@@ -1,4 +1,4 @@
-# CPP-automatic-update-options
+# CPP-automatic-update-options / Debug a memory allocation
 
 ## Inserting "#pragma once" preprocessor directive in the multiple files
 
