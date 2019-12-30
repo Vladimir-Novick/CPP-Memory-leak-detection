@@ -119,9 +119,13 @@ For example :
 
 ![](./images/memory_leak.png)
 
-![](./memory_leak_stop.png)
+Start your debugging session:
+![](./images/memory_leak_stop.png)
 
-![](./memory_leak_watch.png)
+Type _crtBreakAlloc in the Watch window. 
+{,,MSVCR100d.dll}*__p__crtBreakAlloc()
+
+![](./images/memory_leak_watch.png)
 
 {,,MSVCR100d.dll}*__p__crtBreakAlloc()
 
