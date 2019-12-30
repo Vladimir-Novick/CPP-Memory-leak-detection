@@ -118,15 +118,18 @@ For example :
 ## Brakpoint on memory leak detection items
 
 1) Look memory leak report:
+
 ![](./images/memory_leak.png)
 
 2) Start your debugging session:
+
 ![](./images/memory_leak_stop.png)
 
 3) Clear Watch window items.
 
 4) Type _crtBreakAlloc in the Watch window. 
 {,,MSVCR100d.dll}*__p__crtBreakAlloc()
+
 ![](./images/memory_leak_watch.png)
 
 {,,MSVCR100d.dll}*__p__crtBreakAlloc()
