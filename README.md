@@ -115,7 +115,7 @@ For example :
 				}
 
 
-## Brakpoint on memory leak detection items
+## Adding brakpoint on memory leak detection items
 
 1) Look memory leak report:
 
