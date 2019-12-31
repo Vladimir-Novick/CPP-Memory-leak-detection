@@ -125,15 +125,13 @@ For example :
 
 ![](./images/memory_leak_stop.png)
 
-3) Clear Watch window items.
-
-4) Type _crtBreakAlloc in the Watch window. 
+3) Type _crtBreakAlloc in the Watch window. 
 {,,MSVCR100d.dll}*__p__crtBreakAlloc()
 
 ![](./images/memory_leak_watch.png)
 
 {,,MSVCR100d.dll}*__p__crtBreakAlloc()
 
-5) Double click on the -1 value, and enter the new allocation number that causes a user-defined breakpoint.
+4) Double click on the -1 value, and enter the new allocation number that causes a user-defined breakpoint. After insert you see -1 ( current position )
 
-6) From the Debug menu, choose Debug -> Go.
+5) From the Debug menu, choose Debug -> Go.
