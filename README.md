@@ -95,23 +95,45 @@ When you run this code in the Visual Studio debugger, the call to _CrtDumpMemory
 
 For example :
 
+			void main() {
+			    .......
+			    ,,,,,,, 
+			    _CrtDumpMemoryLeaks();
+			}
+			
+## Find memory leaks into the custom DLL
+
+To determine whether a memory leak has occurred in a section of code, you can take snapshots of the memory state before and after the section, and then use _ CrtMemDifference to compare the two states:
+
+For example :
+
+
 				BOOL APIENTRY DllMain( HMODULE hModule,
-									   DWORD  ul_reason_for_call,
-									   LPVOID lpReserved
-									 )
+					   DWORD  ul_reason_for_call,
+					   LPVOID lpReserved
+				 )
 				{
 					switch (ul_reason_for_call)
 					{
 					case DLL_PROCESS_ATTACH:
+					#ifdef _DEBUG	
+						_CrtMemCheckpoint( &s1 );
+					#endif	
+					break;
 					case DLL_THREAD_ATTACH:
+					break;
 					case DLL_THREAD_DETACH:
+					break;
 					case DLL_PROCESS_DETACH:
-					#ifdef _DEBUG					
-					   _CrtDumpMemoryLeaks();
+					#ifdef _DEBUG	
+					   	 _CrtMemCheckpoint( &s2 );
+							if ( _CrtMemDifference( &s3, &s1, &s2) 
+ 					  			_CrtMemDumpStatistics( &s3 );
 					#endif					   
-						break;
+					break;
 					}
 					return TRUE;
+				}
 				}
 
 
