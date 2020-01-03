@@ -145,4 +145,4 @@ Number at the end of DLL file corresponds to the Visual Studio version number.
 
 4) Double click on the -1 value, and enter the new allocation number that causes a user-defined breakpoint. After insert you see -1 ( current position )
 
-5) From the Debug menu, choose Debug -> Go.
+5) After you set a breakpoint on a memory-allocation number, continue to debug. Make sure to run under the same conditions, so the memory-allocation number doesn't change.
