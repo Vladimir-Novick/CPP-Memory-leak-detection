@@ -126,11 +126,20 @@ For example :
 ![](./images/memory_leak_stop.png)
 
 3) Type _crtBreakAlloc in the Watch window. 
-{,,MSVCR100d.dll}*__p__crtBreakAlloc()
+{,,MSVCR160d.dll}*__p__crtBreakAlloc()
+
+	Number at the end of DLL file corresponds to the Visual Studio version number.
+
+	90: Visual Studio 2008 (Version 9.0)
+	100: Visual Studio 2010 (Version 10.0)
+	110: Visual Studio 2012 (Version 11.0)
+	120: Visual Studio 2013 (Version 12.0)
+	140: Visual Studio 2015 (Version 14.0)
+	150: Visual Studio 2017 (Version 15.0)
+	160: Visual Studio 2019 (Version 16.0)
+
 
 ![](./images/memory_leak_watch.png)
-
-{,,MSVCR100d.dll}*__p__crtBreakAlloc()
 
 4) Double click on the -1 value, and enter the new allocation number that causes a user-defined breakpoint. After insert you see -1 ( current position )
 
