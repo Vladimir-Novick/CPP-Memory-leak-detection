@@ -117,7 +117,7 @@ For example :
 
 ## Adding breakpoint on memory leak detection items
 
-1) Look memory leak report:
+1) If your app defines _CRTDBG_MAP_ALLOC, the memory-leak report looks like:
 
 ![](./images/memory_leak.png)
 
