@@ -128,6 +128,8 @@ For example :
 3) Type _crtBreakAlloc in the Watch window. 
 {,,MSVCR160d.dll}*__p__crtBreakAlloc()
 
+Where MSVCR: C Runtime Library (CRL)
+
 Number at the end of DLL file corresponds to the Visual Studio version number.
 
 			90: Visual Studio 2008 (Version 9.0)
