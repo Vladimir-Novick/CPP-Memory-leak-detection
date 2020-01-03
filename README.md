@@ -108,6 +108,9 @@ To determine whether a memory leak has occurred in a section of code, you can ta
 For example :
 
 
+				_CrtMemState s1.s2,s3;
+
+
 				BOOL APIENTRY DllMain( HMODULE hModule,
 					   DWORD  ul_reason_for_call,
 					   LPVOID lpReserved
