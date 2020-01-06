@@ -90,7 +90,7 @@ By manual setting
 		#undef _CRTDBG_MAP_ALLOC
 		#define DEBUG_NEW new
 		#endif
-
+		
 When you run this code in the Visual Studio debugger, the call to _CrtDumpMemoryLeaks generates a report in the Output window.		
 
 For example :
@@ -100,6 +100,12 @@ For example :
 			    ,,,,,,, 
 			    _CrtDumpMemoryLeaks();
 			}
+			
+## Get filename that does not contain the specified string	
+	
+Visual Studio 2019 > Tools > Command Line > Developer PowerShell		
+		
+ls ./*/*.cpp | Where{-not(select-string -path $_ -pattern "_CRTDBG_MAP_ALLOC" -Quiet)} | Select FullName				
 			
 ## Find memory leaks into the custom DLL
 
