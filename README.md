@@ -139,6 +139,22 @@ For example :
 				}
 				}
 
+## Use your own DllMain in MFC Dll's
+
+If you try to write your own DllMain, you get a linker error saying "DllMain already defined". 
+
+To resolve this issue :
+1) copy "dllmodul.cpp" from MFC source directory to your project directory and include it in your own project.
+2 Modify dllmodul.cpp:
+
+				CATCH(CMemoryException, e)
+				{
+					e->Delete();
+				//	DELETE_EXCEPTION(e);
+					pApp->ExitInstance();
+					AfxWinTerm();
+					goto Cleanup;       // Init Failed
+				}
 
 ## Adding breakpoint on memory leak detection items
 
