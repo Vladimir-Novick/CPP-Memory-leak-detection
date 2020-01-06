@@ -144,7 +144,9 @@ For example :
 If you try to write your own DllMain, you get a linker error saying "DllMain already defined". 
 
 To resolve this issue :
+
 1) copy "dllmodul.cpp" from MFC source directory to your project directory and include it in your own project.
+
 2 Modify dllmodul.cpp:
 
 				CATCH(CMemoryException, e)
