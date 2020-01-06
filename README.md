@@ -105,7 +105,7 @@ For example :
 	
 Visual Studio 2019 > Tools > Command Line > Developer PowerShell		
 		
-ls ./*/*.cpp | Where{-not(select-string -path $_ -pattern "_CRTDBG_MAP_ALLOC" -Quiet)} | Select FullName				
+ls ./\*/\*.cpp | Where{-not(select-string -path $_ -pattern "_CRTDBG_MAP_ALLOC" -Quiet)} | Select FullName				
 			
 ## Find memory leaks into the custom DLL
 
